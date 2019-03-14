@@ -51,11 +51,14 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportlibVersion"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // COMPLETED (02) Add the dependencies for navigation fragment ktx and navigation UI ktx
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "com.google.android.material:material:1.1.0-alpha04"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
-    // TODO (02) Add the dependencies for navigation fragment ktx and navigation UI ktx
-    // android.arch.navigation:navigation-fragment-ktx:$navigationVersion
-    // android.arch.navigation:navigation-ui-ktx:$navigationVersion
-    implementation "com.google.android.material:material:1.1.0-alpha04"
+
 }
