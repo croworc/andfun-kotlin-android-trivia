@@ -20,6 +20,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_root"
     app:startDestination="@+id/titleFragment">
+
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.example.android.navigation.TitleFragment"
@@ -29,6 +30,7 @@
             android:id="@+id/action_titleFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.android.navigation.GameFragment"
@@ -36,31 +38,45 @@
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_gameOverFragment"
-            app:destination="@id/gameOverFragment" />
-        <!-- TODO (01) Add popUpTo gameFragment with inclusive=true
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@+id/gameFragment"
+            app:popUpToInclusive="true" />
+        <!-- COMPLETED (01) Add popUpTo gameFragment with inclusive=true
              Go to the editor, select PopTo GameFragment in the attributes pane
              with the inclusive flag checked. -->
         <action
             android:id="@+id/action_gameFragment_to_gameWonFragment"
-            app:destination="@id/gameWonFragment" />
-        <!-- TODO (02) Add popUpTo gameFragment with inclusive=true
+            app:destination="@id/gameWonFragment"
+            app:popUpTo="@+id/gameFragment"
+            app:popUpToInclusive="true" />
+        <!-- COMPLETED (02) Add popUpTo gameFragment with inclusive=true
              Go to the editor, select PopTo GameFragment in the attributes pane
              with the inclusive flag checked. -->
     </fragment>
+
     <fragment
         android:id="@+id/gameWonFragment"
         android:name="com.example.android.navigation.GameWonFragment"
         android:label="@string/android_trivia"
         tools:layout="@layout/fragment_game_won">
-        <!-- TODO (04) Add an action connecting the gameWonFragment to the gameFragment
+        <!-- COMPLETED (04) Add an action connecting the gameWonFragment to the gameFragment
              Select PopTo TitleFragment in the editor with inclusive turned off -->
+        <action
+            android:id="@+id/action_gameWonFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/titleFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/gameOverFragment"
         android:name="com.example.android.navigation.GameOverFragment"
         android:label="@string/android_trivia"
         tools:layout="@layout/fragment_game_over">
-        <!-- TODO (03) Add an action connecting the gameOverFragment to the gameFragment
+        <!-- COMPLETED (03) Add an action connecting the gameOverFragment to the gameFragment
              Select PopTo TitleFragment in the editor with inclusive turned off -->
+        <action
+            android:id="@+id/action_gameOverFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/titleFragment" />
     </fragment>
 </navigation>
