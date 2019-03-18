@@ -42,13 +42,28 @@ class GameWonFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_game_won, container, false)
+
+        // Set an OnClickListener for the [NEXT MATCH] button that will return us to the
+        // GameFragment
         binding.nextMatchButton.setOnClickListener { view: View ->
-            // TODO (10) Replace action ID with actionGameWonFragmentToGameFragment
+            // COMPLETED (10) Replace action ID with actionGameWonFragmentToGameFragment
             // From GameWonFragmentDirections
-            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
+            view.findNavController().navigate(GameWonFragmentDirections
+                    .actionGameWonFragmentToGameFragment())
         }
-        // TODO (08) Add and show toast to get the GameWonFragmentArgs from the arguments Bundle
+
+        // Retrieve the arguments which where passed to the fragment during instantiation
+        // Note: method requireArguments() returns a non-null bundle, whereas the arguments property
+        // provides a nullable bundle. As the safe-args feature guarantees we *will* have arguments,
+        // we can safely use requireArguments() here.
+        val args = GameWonFragmentArgs.fromBundle(requireArguments())
+
+        // COMPLETED (08) Add and show toast to get the GameWonFragmentArgs from the arguments Bundle
         // "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}"
+        Toast.makeText(context,
+                "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}",
+                Toast.LENGTH_SHORT).show()
+
         return binding.root
     }
 }
