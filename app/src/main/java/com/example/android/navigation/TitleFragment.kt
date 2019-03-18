@@ -33,14 +33,20 @@ import com.example.android.navigation.databinding.FragmentTitleBinding
 class TitleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        // Inflate the layout
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_title, container, false)
-        binding.playButton.setOnClickListener (
-                // TODO (11) Replace action ID with actionTitleFragmentToGameFragment
-                // From TitleFragmentDirections
-                // We will have to switch this to using an anonymous function, since
-                // createNavigateOnClickListener cannot take NavDirections
-                Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))
+
+        // Set an OnClickListener to the [PLAY BUTTON] that takes us to the GameFragment
+        binding.playButton.setOnClickListener { playButton: View ->
+            // COMPLETED (11) Replace action ID with actionTitleFragmentToGameFragment
+            // From TitleFragmentDirections
+            // We will have to switch this to using an anonymous function, since
+            // createNavigateOnClickListener cannot take NavDirections
+            playButton.findNavController().navigate(TitleFragmentDirections
+                    .actionTitleFragmentToGameFragment())
+        }
         setHasOptionsMenu(true)
         return binding.root
     }
