@@ -21,7 +21,7 @@
         android:id="@+id/aboutFragment"
         android:title="@string/about" />
 
-    <!-- TODO (02) Create the navDrawer menu
+    <!-- COMPLETED (02) Create the navDrawer menu
          Right click the menu folder and select New > Menu resource file.
          Add rulesFragment and aboutFragment menu items. -->
 </menu>
