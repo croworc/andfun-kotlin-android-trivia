@@ -28,22 +28,30 @@ import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    // TODO (05) Add private lateinit var drawerLayout
+
+    // COMPLETED (05) Add private lateinit var drawerLayout
+    private lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        // TODO (06) Initialize drawerLayout var from binding
+
+        // COMPLETED (06) Initialize drawerLayout var from binding
+         drawerLayout = binding.drawerLayout
 
         val navController = this.findNavController(R.id.myNavHostFragment)
-        // TODO (07) Add the DrawerLayout as the second parameter to setupActionBarWithNavController
-        NavigationUI.setupActionBarWithNavController(this, navController)
-        // TODO (08) Hook the navigation UI up to the navigation view. (navView)
+        // COMPLETED (07) Add the DrawerLayout as the third parameter to setupActionBarWithNavController
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        // COMPLETED (08) Hook the navigation UI up to the navigation view. (navView)
+        NavigationUI.setupWithNavController(binding.navView, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-        // TODO (09) Replace navController.navigateUp with NavigationUI.navigateUp with drawerLayout param
-        return navController.navigateUp()
+        // COMPLETED (09) Replace navController.navigateUp with NavigationUI.navigateUp with drawerLayout param
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
