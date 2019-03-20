@@ -76,7 +76,11 @@
         <action
             android:id="@+id/action_gameWonFragment_to_gameFragment"
             app:destination="@id/gameFragment"
-            app:popUpTo="@+id/titleFragment"/>
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/titleFragment" />
         <argument
             android:name="numQuestions"
             app:argType="integer" />
