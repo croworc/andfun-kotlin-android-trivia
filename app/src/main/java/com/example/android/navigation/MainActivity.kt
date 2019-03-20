@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
         // prevent nav gesture if not on start destination
-        navController.addOnNavigatedListener { nc: NavController, nd: NavDestination ->
+        navController.addOnDestinationChangedListener { nc, nd, _ ->
             if (nd.id == nc.graph.startDestination) {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             } else {
@@ -51,6 +51,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-        return NavigationUI.navigateUp(drawerLayout, navController)
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
