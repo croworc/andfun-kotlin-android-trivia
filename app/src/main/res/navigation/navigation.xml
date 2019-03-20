@@ -43,9 +43,10 @@
         <action
             android:id="@+id/action_gameFragment_to_gameOverFragment"
             app:destination="@id/gameOverFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
             app:popUpTo="@+id/gameFragment"
             app:popUpToInclusive="true" />
-        />
         <!-- TODO (01) Create fade_in animation in new file
              Do this by right clicking on the anim folder with
              New->Animation resource file -->
