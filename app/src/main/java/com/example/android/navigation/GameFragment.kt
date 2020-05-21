@@ -119,9 +119,13 @@ class GameFragment : Fragment() {
     // Calling invalidateAll on the FragmentGameBinding updates the data.
     private fun setQuestion() {
         currentQuestion = questions[questionIndex]
-        // randomize the answers into a copy of the array
+        // Make a copy of this question's answers, so we can shuffle them for display, while
+        // leaving the original answers untouched (which are read-only anyway)...
         answers = currentQuestion.answers.toMutableList()
-        // and shuffle them
+        // ...and now shuffle them.
+        // As this fragment is data-bound to the layout, a call to
+        // invalidateAll() (called from the [Submit] button) will show the updated answers
+        // on the screen.
         answers.shuffle()
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_android_trivia_question, questionIndex + 1, numQuestions)
     }
